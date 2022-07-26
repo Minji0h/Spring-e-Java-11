@@ -1,13 +1,13 @@
-package com.minji0h.springjava;
+package com.minji0h.springejava;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringJavaApplication {
+public class SpringejavaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringJavaApplication.class, args);
+		SpringApplication.run(SpringejavaApplication.class, args);
 	}
 
 }

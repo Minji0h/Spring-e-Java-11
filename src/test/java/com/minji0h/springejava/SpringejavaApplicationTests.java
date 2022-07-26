@@ -1,10 +1,10 @@
-package com.minji0h.springjava;
+package com.minji0h.springejava;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringJavaApplicationTests {
+class SpringejavaApplicationTests {
 
 	@Test
 	void contextLoads() {
