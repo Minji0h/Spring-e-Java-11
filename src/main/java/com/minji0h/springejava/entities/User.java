@@ -1,13 +1,12 @@
 package com.minji0h.springejava.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-@Entity(name="User")
-@javax.persistence.Table(name="`user`")
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,9 +17,11 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
+
 
     public User(){
-
     }
 
     public User(Long id, String name, String email, String phone, String password) {
@@ -69,6 +70,9 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public List<Order> getOrders() {
+        return orders;
     }
 
     @Override
