@@ -2,6 +2,7 @@ package com.minji0h.springejava.config;
 
 import com.minji0h.springejava.entities.Order;
 import com.minji0h.springejava.entities.User;
+import com.minji0h.springejava.entities.enums.OrderStatus;
 import com.minji0h.springejava.repositories.OrderRepository;
 import com.minji0h.springejava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1,u2));
 
-        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), u1);
-        Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), u2);
-        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), u1);
+        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), u1, OrderStatus.DELIVERED);
+        Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), u2,OrderStatus.DELIVERED);
+        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), u1, OrderStatus.PAID);
 
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 
