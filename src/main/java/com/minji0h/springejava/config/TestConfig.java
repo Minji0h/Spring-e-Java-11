@@ -1,8 +1,10 @@
 package com.minji0h.springejava.config;
 
+import com.minji0h.springejava.entities.Category;
 import com.minji0h.springejava.entities.Order;
 import com.minji0h.springejava.entities.User;
 import com.minji0h.springejava.entities.enums.OrderStatus;
+import com.minji0h.springejava.repositories.CategoryRepository;
 import com.minji0h.springejava.repositories.OrderRepository;
 import com.minji0h.springejava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
@@ -35,6 +40,12 @@ public class TestConfig implements CommandLineRunner {
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), u1, OrderStatus.PAID);
 
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 
     }
 }
