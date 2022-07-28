@@ -2,6 +2,7 @@ package com.minji0h.springejava.services;
 
 import com.minji0h.springejava.entities.User;
 import com.minji0h.springejava.repositories.UserRepository;
+import com.minji0h.springejava.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class UserService {
     }
     public User findById(Long id){
         Optional<User> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(()-> new ResourceNotFoundException(id));
     }
 
     public User insert(User obj){
@@ -29,4 +30,15 @@ public class UserService {
         repository.deleteById(id);
     }
 
+    public User update(Long id, User obj){
+        User entity = repository.getOne(id);
+        updateData(entity,obj);
+        return repository.save(entity);
+    }
+
+    private void updateData(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPhone(obj.getPhone());
+    }
 }
